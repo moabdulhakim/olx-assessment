@@ -1,0 +1,21 @@
+.olx-link {
+    text-decoration: none;
+    font-weight: var(--fw-regular);
+}
+
+.olx-link:hover {
+    color: var(--secondary-color);
+}
+
+.header{
+    font-weight: var(--fw-bold);
+}
+
+.footer{
+    font-weight: var(--fw-caption);
+    font-size: var(--fs-caption);
+}
+
+.footer:hover{
+    color: var(--tertiary-color);
+}

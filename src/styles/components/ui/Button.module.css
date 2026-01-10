@@ -1,0 +1,41 @@
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;  
+    width: fit-content;
+    height: fit-content;
+    gap: 5px;
+}
+
+.content{
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-caption);
+}
+
+.primary{
+    border-radius: 4.4rem;
+    background: var(--primary-color);
+    height: 4.4rem;
+    width: 9.4rem;  
+}
+.secondary{
+    border-radius: 0.4rem;
+    background: var(--secondary-color);
+}
+
+.primary:hover, .secondary:hover{
+    filter: brightness(97%);
+}
+
+
+
+.link-like{
+    border-bottom: 2px solid var(--tertiary-color);
+    padding: 0;
+}
+
+.link-like:hover{
+    border-bottom: none;
+}
+

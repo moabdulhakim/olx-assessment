@@ -1,0 +1,19 @@
+.page{
+    padding: 40px 60px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.variants{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: fit-content;
+    margin: 2px 10px;
+}

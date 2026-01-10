@@ -5,21 +5,23 @@
 
   --primary-color: #FCDE68;
   --secondary-color: #5DCBF4;
+  --tertiary-color:#EC5B3E;
 
-  --text-primary: #000000;
-  --text-secondary: #404041;
+  --text-primary: #404041;
+  --text-secondary: #000000;
 
   /* Font Sizes */
-  --fs-h1: 32px;
-  --fs-h2: 24px;
-  --fs-h3: 20px;
-  --fs-body: 16px;
-  --fs-caption: 14px;
+  --fs-h1: 3.2rem;
+  --fs-h2: 2.4rem;
+  --fs-h3: 2rem;
+  --fs-body: 1.6rem;
+  --fs-caption: 1.4rem;
 
   /* Font Weights */
   --fw-bold: 700;
   --fw-medium: 500;
   --fw-regular: 400;
+  --fw-caption: 300;
 
   /* line heights */
   --ln-base: 1.5;
@@ -31,6 +33,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-size: 62.5%;
 }
 
 body {
@@ -52,6 +55,17 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button{
+  cursor: pointer;
+    border: none;
+    background: none;
+}
+
+input{
+  outline: none;
+  border: none;
 }
 
 @media (prefers-color-scheme: dark) {
