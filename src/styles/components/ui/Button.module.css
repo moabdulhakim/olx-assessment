@@ -9,11 +9,6 @@
     color: var(--text-primary)
 }
 
-.content{
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-caption);
-}
-
 .primary{
     border-radius: 4.4rem;
     background: var(--primary-color);

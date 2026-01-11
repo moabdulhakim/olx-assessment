@@ -27,9 +27,9 @@ const ui = () => {
                 <div>
                     <h2>Buttons</h2>
                     <div className={styles.variants}>
-                        <Button icon="iconSell.svg" content="Sell" variant="primary" />
-                        <Button icon="search.svg" iconSize={20} variant="secondary" />
-                        <Button content="Login" variant="link-like" />
+                        <Button variant="primary">Sell</Button>
+                        <Button variant="secondary">Login</Button>
+                        <Button variant="link-like">Login</Button>
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "@/styles/components/ui/Input.module.css";
 import { useEffect, useRef, useState } from "react";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 interface Option {
   label?: string;
@@ -15,11 +16,16 @@ interface InputProps {
   handleSelect?: (option: Option) => void;
 }
 
-const Input = ({ type, placeholder, icon, options, handleSelect=()=>{console.log('clicked');} }: InputProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const containerRef = useRef<HTMLDivElement>(null);
+const handleSelectDefault = (option: Option) => {
+    console.log(option.value, "is selected")
+}
 
+const Input = ({ type, placeholder, icon, options, handleSelect = handleSelectDefault }: InputProps) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    
+    const containerRef = useRef<HTMLDivElement>(null);
+    const {isOpen, setIsOpen} = useClickOutside(containerRef);
+    
   const filteredOptions = options?.filter((option) => {
     return option.label?.toLowerCase().includes(searchTerm.toLowerCase()) || option.value.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm.toLowerCase().includes(option.value.toLowerCase()) || (option.label && searchTerm.toLowerCase().includes(option.label.toLowerCase()));
   });
@@ -28,26 +34,6 @@ const Input = ({ type, placeholder, icon, options, handleSelect=()=>{console.log
     setIsOpen(!isOpen);
   };
 
-  useEffect(()=>{
-    const handleClickOutside = (event: MouseEvent) =>{
-        if(containerRef.current && !containerRef.current.contains(event.target as Node)){
-            setIsOpen(false);
-        }
-    }
-
-    const handleEscClick = (event: KeyboardEvent)=>{
-        if(event.key == "Escape") {
-            setIsOpen(false);
-        }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscClick)
-    return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-        document.removeEventListener("keydown", handleEscClick)
-    }
-  }, [])
 
   return (
     <div className={styles["input-container"]} ref={containerRef}>

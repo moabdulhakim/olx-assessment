@@ -1,0 +1,7 @@
+.page{
+    padding-top: var(--header-height);
+}
+
+.main{
+    min-height: 100vh;
+}

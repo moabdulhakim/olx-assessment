@@ -26,6 +26,9 @@
   /* line heights */
   --ln-base: 1.5;
   --ln-tight: 1.2;
+
+  /* heights */
+  --header-height: 13.5rem;
 }
 
 *{

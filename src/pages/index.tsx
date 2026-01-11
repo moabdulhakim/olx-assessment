@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "@/styles/pages/Home.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
 import Header from "@/components/common/Header";
+import Navbar from "@/components/common/Navbar";
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         className={`${styles.page}`}
       >
         <Header />
+        <Navbar />
         <main className={styles.main}>
 
         </main>

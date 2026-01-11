@@ -6,6 +6,7 @@ import OlxLink from '../ui/OlxLink'
 import { useTranslation } from '@/hooks/useTranslation'
 import Input from '../ui/Input'
 import { lebanonGovernorates } from '../../../public/dummyData'
+import { getIconPath } from '@/utils/utils'
 
 const Header = () => {
     const {t, locale} = useTranslation();
@@ -40,8 +41,11 @@ const Header = () => {
 
             <div className={styles.left}>
                 <OlxLink locale={otherLocale} content={lang} variant='header' onClick={toggleLang} />
-                <Button content="Login" variant="link-like" />
-                <Button icon="iconSell.svg" content="Sell" variant="primary" />
+                <Button variant="link-like">Login</Button>
+                <Button variant="primary">
+                    <Image src={getIconPath("iconSell.svg")} alt="arrow" width={18} height={18}/>
+                    Sell
+                </Button> 
             </div>
         </div>
     </header>

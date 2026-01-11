@@ -58,4 +58,7 @@
     gap: 1.8rem;
 }
 
-
+.left button{
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-bold);
+}
