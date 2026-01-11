@@ -1,6 +1,6 @@
 # OLX Lebanon - Technical Assessment
 
-A production-grade classifieds platform built with Next.js, TypeScript, and pure CSS modules, showcasing modern web development practices with server-side rendering, internationalization, and responsive design.
+A production-grade classifieds platform built with Next.js, TypeScript, and pure CSS modules, showcasing modern web development practices with server-side rendering and internationalization.
 
 ---
 
@@ -13,8 +13,6 @@ A production-grade classifieds platform built with Next.js, TypeScript, and pure
 - **Simulated Asynchronous Data Loading**: Featured Ads section implements JavaScript Promises to simulate realistic loading behavior (4-second delay), demonstrating proper async state management.
 
 - **Multilingual Support**: Complete Arabic and English language support with seamless toggling and full RTL (Right-to-Left) layout implementation for Arabic content.
-
-- **Responsive Design**: Mobile-first approach following OLX Lebanon's UI guidelines, ensuring optimal experience across all device sizes.
 
 - **Zero Dependencies UI**: All components and styling built from scratch without external UI libraries (no Material-UI, Ant Design, etc.).
 
@@ -105,7 +103,7 @@ olx-assessment/
 
 ### Prerequisites
 
-- Node.js 18+ and npm (or yarn/pnpm)
+- Node.js and npm (or yarn/pnpm)
 
 ### Installation
 
@@ -151,7 +149,7 @@ Switch between Arabic and English using the language toggle in the header. The a
 
 ### Current Status
 
-✅ **Completed**: Home Screen with SSR, multilingual support, responsive design, and simulated async data loading
+✅ **Completed**: Home Screen with SSR, multilingual support, and simulated async data loading
 
 🚧 **In Progress**: Post An Ad screen (dynamic form logic)
 
@@ -172,7 +170,3 @@ Feel free to reach out for any questions or clarifications regarding this assess
 ## 📄 License
 
 This project was created as a technical assessment for OLX Lebanon.
-
----
-
-**Built with ❤️ using Next.js, TypeScript, and Pure CSS**
