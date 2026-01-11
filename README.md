@@ -24,7 +24,7 @@ A production-grade classifieds platform built with Next.js, TypeScript, and pure
 
 ### 🚧 Work in Progress
 
-**Post An Ad Screen**: Currently under development. Due to University Final Exams (ending January 13th, 2026), I prioritized delivering a high-quality architectural foundation with the Home Screen implementation. The dynamic form logic and category-specific field rendering for the Post An Ad feature will be completed by **January 14th, 2026**.
+**Post An Ad Screen**: Currently under development. Due to University Final Exams (ending January 20th, 2026), I prioritized delivering a high-quality architectural foundation with the Home Screen implementation. The dynamic form logic and category-specific field rendering for the Post An Ad feature will be completed by **January 14th, 2026**.
 
 ---
 
@@ -157,7 +157,7 @@ Switch between Arabic and English using the language toggle in the header. The a
 
 ### Timeline Commitment
 
-Due to university commitments (Final Exams ending January 13th), I focused on delivering a solid architectural foundation. I am committed to completing the Post An Ad feature with full dynamic form functionality by **January 14th, 2026**.
+Due to university commitments (Final Exams ending January 20th), I focused on delivering a solid architectural foundation. I am committed to completing the Post An Ad feature with full dynamic form functionality by **January 14th, 2026**.
 
 ---
 
