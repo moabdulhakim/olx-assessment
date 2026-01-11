@@ -1,40 +1,178 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# OLX Lebanon - Technical Assessment
 
-## Getting Started
+A production-grade classifieds platform built with Next.js, TypeScript, and pure CSS modules, showcasing modern web development practices with server-side rendering, internationalization, and responsive design.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Key Features
+
+### ✅ Implemented
+
+- **Server-Side Rendering (SSR)**: Home screen is fully server-rendered for optimal performance and SEO, with categories fetched at request time using `getServerSideProps`.
+
+- **Simulated Asynchronous Data Loading**: Featured Ads section implements JavaScript Promises to simulate realistic loading behavior (4-second delay), demonstrating proper async state management.
+
+- **Multilingual Support**: Complete Arabic and English language support with seamless toggling and full RTL (Right-to-Left) layout implementation for Arabic content.
+
+- **Responsive Design**: Mobile-first approach following OLX Lebanon's UI guidelines, ensuring optimal experience across all device sizes.
+
+- **Zero Dependencies UI**: All components and styling built from scratch without external UI libraries (no Material-UI, Ant Design, etc.).
+
+- **Custom CSS Modules**: Modular, scoped styling with pure CSS—no Tailwind or utility frameworks.
+
+- **Type-Safe Development**: Full TypeScript implementation ensuring type safety across the entire codebase.
+
+### 🚧 Work in Progress
+
+**Post An Ad Screen**: Currently under development. Due to University Final Exams (ending January 13th, 2026), I prioritized delivering a high-quality architectural foundation with the Home Screen implementation. The dynamic form logic and category-specific field rendering for the Post An Ad feature will be completed by **January 14th, 2026**.
+
+---
+
+## 🏗️ Architectural Decisions
+
+### Why Server-Side Rendering?
+
+SSR was chosen for the Home Screen to:
+- Improve initial page load performance
+- Enhance SEO capabilities for category pages
+- Provide better user experience with immediate content availability
+- Demonstrate understanding of Next.js rendering strategies
+
+### Why JavaScript Promises?
+
+The Featured Ads section uses Promises to:
+- Simulate real-world API behavior with loading states
+- Demonstrate proper async/await patterns
+- Show implementation of loading skeletons and error handling
+- Provide a foundation for future API integration
+
+### Technology Choices
+
+- **Next.js Pages Router**: Chosen for its mature SSR capabilities and straightforward routing model
+- **TypeScript**: Ensures type safety and better developer experience
+- **Pure CSS Modules**: Provides scoped styling without build-time overhead of utility frameworks
+- **No External UI Libraries**: Demonstrates ability to build production-quality UI components from scratch
+
+---
+
+## 📁 Folder Structure
+
+```
+olx-assessment/
+├── public/
+│   ├── assets/
+│   │   ├── icons/          # SVG icons and graphics
+│   │   ├── images/         # Static images
+│   │   └── logo.svg        # OLX logo
+│   ├── dummyData.ts        # Mock data for development
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── common/         # Shared components (Header, Navbar, AdCard)
+│   │   ├── pages/          # Page-specific components
+│   │   │   └── home/       # Home page sections (HeroBanner, FeaturedAds, AllCategories)
+│   │   └── ui/             # Reusable UI primitives (Button, Input, OlxLink)
+│   ├── hooks/
+│   │   ├── useTranslation.ts   # i18n hook
+│   │   └── useClickOutside.ts  # Click outside detection
+│   ├── locales/
+│   │   ├── ar.ts           # Arabic translations
+│   │   └── en.ts           # English translations
+│   ├── pages/
+│   │   ├── _app.tsx        # Application wrapper
+│   │   ├── _document.tsx   # Custom document with RTL support
+│   │   ├── index.tsx       # Home page with SSR
+│   │   └── ui.tsx          # UI component showcase
+│   ├── services/
+│   │   ├── adsService.ts       # Featured ads data fetching
+│   │   └── categoryService.ts  # Category data fetching
+│   ├── styles/
+│   │   ├── components/     # Component-specific styles
+│   │   ├── pages/          # Page-specific styles
+│   │   └── globals.css     # Global styles and CSS variables
+│   ├── types/
+│   │   └── category.ts     # TypeScript type definitions
+│   └── utils/
+│       └── utils.ts        # Utility functions
+├── next.config.ts          # Next.js configuration
+├── tsconfig.json           # TypeScript configuration
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Getting Started
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Prerequisites
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- Node.js 18+ and npm (or yarn/pnpm)
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/moabdulhakim/olx-assessment.git
+   cd olx-assessment
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+### Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+
+## 🌐 Language Support
+
+Switch between Arabic and English using the language toggle in the header. The application supports:
+- Complete UI translation
+- RTL/LTR layout switching
+- Locale-specific formatting
+
+---
+
+## 📋 Development Notes
+
+### Current Status
+
+✅ **Completed**: Home Screen with SSR, multilingual support, responsive design, and simulated async data loading
+
+🚧 **In Progress**: Post An Ad screen (dynamic form logic)
+
+### Timeline Commitment
+
+Due to university commitments (Final Exams ending January 13th), I focused on delivering a solid architectural foundation. I am committed to completing the Post An Ad feature with full dynamic form functionality by **January 14th, 2026**.
+
+---
+
+## 👨‍💻 Contact Information
+
+**Developer**: Mohamad Abdulhakim
+
+Feel free to reach out for any questions or clarifications regarding this assessment.
+
+---
+
+## 📄 License
+
+This project was created as a technical assessment for OLX Lebanon.
+
+---
+
+**Built with ❤️ using Next.js, TypeScript, and Pure CSS**
