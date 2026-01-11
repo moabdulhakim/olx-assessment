@@ -29,22 +29,22 @@ const Header = () => {
         <div className={styles["utilities-container"]}>
 
             <div className={styles.right}>
-                <Input icon='location-pin.svg' placeholder='Location' type='text' options={lebanonGovernorates} />
+                <Input icon='location-pin.svg' placeholder={t.header.location} type='text' options={lebanonGovernorates} />
             </div>
 
             <div className={styles.center}>
-                <Input placeholder="Find Cars, Mobile Phones and More..." type='text' />
-                <button>
-                    <Image src="/assets/icons/search.svg" alt="search" width={24} height={24} />
+                <Input placeholder={t.header.search} type='text' />
+                <button className={`${locale=="ar" && styles['ar-search']}`}>
+                    <Image src={getIconPath("search.svg")} alt="search" width={24} height={24} />
                 </button>
             </div>
 
             <div className={styles.left}>
                 <OlxLink locale={otherLocale} content={lang} variant='header' onClick={toggleLang} />
-                <Button variant="link-like">Login</Button>
+                <Button variant="link-like">{t.auth.login}</Button>
                 <Button variant="primary">
                     <Image src={getIconPath("iconSell.svg")} alt="arrow" width={18} height={18}/>
-                    Sell
+                    {t.header.sell}
                 </Button> 
             </div>
         </div>

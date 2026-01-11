@@ -7,7 +7,10 @@ const nextConfig: NextConfig = {
   i18n:{
     locales: ["ar", "en"],
     defaultLocale: "en",
-  }
+  },
+  images: {
+    remotePatterns: [new URL('https://images.olx.com.lb/**')],
+  },
 };
 
 export default nextConfig;

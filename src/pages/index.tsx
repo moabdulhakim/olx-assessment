@@ -9,6 +9,7 @@ import { GetServerSideProps } from "next";
 import { getAllCategories } from "@/services/categoryService";
 import { CategoryList } from "@/types/category";
 import AllCategories from "@/components/pages/home/AllCategories";
+import FeaturedAds from "@/components/pages/home/FeaturedAds";
 
 
 export default function Home({categories}: {categories: CategoryList}) {
@@ -30,6 +31,7 @@ export default function Home({categories}: {categories: CategoryList}) {
         <main className={styles.main}>
             <HeroBanner />
             <AllCategories categories={categories} />
+            <FeaturedAds />
         </main>
       </div>
     </>

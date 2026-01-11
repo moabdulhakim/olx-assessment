@@ -7,10 +7,12 @@ import Button from '../ui/Button';
 import Image from 'next/image';
 import { getIconPath } from '@/utils/utils';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const navCategoriesIds = [51, 61, 70, 43, 739, 56, 19, 50];
 
 const Navbar = ({categories}: {categories: CategoryList}) => {
+    const {t, locale} = useTranslation();
 
     const categoriesListRef = useRef(null);
     const {isOpen, setIsOpen} = useClickOutside(categoriesListRef);
@@ -42,19 +44,19 @@ const Navbar = ({categories}: {categories: CategoryList}) => {
         <div ref={categoriesListRef}>
             <Button variant="link-like" customStyles={styles["all-categories-btn"]} onClick={()=>setIsOpen(!isOpen)}>
                 <span>
-                    All Categories
+                    {t.home.categories}
                 </span>
                 <Image src={getIconPath("arrow.svg")} alt="arrow" width={18} height={18} style={{rotate: isOpen ? "180deg" : "0deg"}} />
             </Button>
 
             {isOpen && (
-                <CategoriesListComponent categories={categories} />
+                <CategoriesListComponent categories={categories} locale={locale} />
             )}
         </div>
         {
             navCategories.map((category)=>{
                 return (
-                    <OlxLink key={category.id} href={`/${category.parentSlug}/${category.slug}`} content={category.name} />
+                    <OlxLink key={category.id} href={`/${category.parentSlug}/${category.slug}`} content={locale == "ar"?  category.name_l1:category.name} />
                 )
             })
         }
@@ -63,16 +65,16 @@ const Navbar = ({categories}: {categories: CategoryList}) => {
 }
 
 
-const CategoriesListComponent = ({categories}: {categories: CategoryList}) =>{
+const CategoriesListComponent = ({categories, locale}: {categories: CategoryList, locale: string}) =>{
     return (
         <div className={styles["categories-list"]}>
             {categories.map((category)=>{
                 return (
                     <div className={styles.block} key={category.id}>
-                        <OlxLink key={category.id} href={`/${category.slug}`} content={category.name} variant='header' />
+                        <OlxLink key={category.id} href={`/${category.slug}`} content={locale == "ar"?  category.name_l1:category.name} variant='header' />
                         {category.children.map((child)=>{
                             return (
-                                <OlxLink key={child.id} href={`/${category.slug}/${child.slug}`} content={child.name} />
+                                <OlxLink key={child.id} href={`/${category.slug}/${child.slug}`} content={locale == "ar"?  child.name_l1:child.name} />
                             )
                         })}
                     </div>

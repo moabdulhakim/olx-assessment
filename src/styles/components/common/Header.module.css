@@ -23,7 +23,6 @@
     padding-top: 1rem;
     padding-bottom: 1.6rem;
     margin: 0 auto;
-    max-width: 1280px;
     gap: 2.5rem;
 }
 
@@ -31,6 +30,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    flex: 3;
 }
 
 .center input{
@@ -48,6 +48,10 @@
     border-radius: 0 0.4rem 0.4rem 0;
 }
 
+.ar-search{
+    border-radius: 0.4rem 0 0 0.4rem !important;
+}
+
 .center button:hover{
     filter: brightness(97%);
 }
@@ -55,10 +59,12 @@
 .left{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.8rem;
+    flex: 1;
 }
 
-.left button{
-    font-size: var(--fs-caption);
+.left *{
+    font-size: 1.7rem;
     font-weight: var(--fw-bold);
 }
