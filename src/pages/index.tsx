@@ -4,9 +4,13 @@ import styles from "@/styles/pages/Home.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
 import Header from "@/components/common/Header";
 import Navbar from "@/components/common/Navbar";
+import HeroBanner from "@/components/pages/home/HeroBanner";
+import { GetServerSideProps } from "next";
+import { getAllCategories } from "@/services/categoryService";
+import { CategoryList } from "@/types/category";
 
 
-export default function Home() {
+export default function Home({categories}: {categories: CategoryList}) {
     const {t} = useTranslation();
 
   return (
@@ -21,11 +25,27 @@ export default function Home() {
         className={`${styles.page}`}
       >
         <Header />
-        <Navbar />
+        <Navbar categories={categories} />
         <main className={styles.main}>
-
+            <HeroBanner />
+            {/* <AllCategories /> */}
         </main>
       </div>
     </>
   );
+}
+
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  try{
+    const categories = await getAllCategories();
+    return {
+        props: {categories}
+    }
+  }catch(error){
+    console.log(error);
+    return {
+        props: {categories: []}
+    }
+  }
 }

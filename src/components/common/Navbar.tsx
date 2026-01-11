@@ -10,17 +10,11 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 
 const navCategoriesIds = [51, 61, 70, 43, 739, 56, 19, 50];
 
-const Navbar = () => {
-    const [categories, setCategories] = useState<CategoryList>([]);
+const Navbar = ({categories}: {categories: CategoryList}) => {
 
     const categoriesListRef = useRef(null);
     const {isOpen, setIsOpen} = useClickOutside(categoriesListRef);
 
-    useEffect(()=>{
-        getAllCategories().then((categories: CategoryList)=>{
-            setCategories(categories);
-        })
-    }, [])
 
     const navCategories = useMemo(()=>{
         const result: CategoryList = [];
@@ -74,7 +68,7 @@ const CategoriesListComponent = ({categories}: {categories: CategoryList}) =>{
         <div className={styles["categories-list"]}>
             {categories.map((category)=>{
                 return (
-                    <div className={styles.block}>
+                    <div className={styles.block} key={category.id}>
                         <OlxLink key={category.id} href={`/${category.slug}`} content={category.name_l1} variant='header' />
                         {category.children.map((child)=>{
                             return (
