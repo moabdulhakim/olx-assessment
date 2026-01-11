@@ -28,6 +28,9 @@
   --ln-tight: 1.2;
 }
 
+*{
+  transition: all 0.15s ease-in-out;
+}
 
 html,
 body {
@@ -59,8 +62,8 @@ a {
 
 button{
   cursor: pointer;
-    border: none;
-    background: none;
+  border: none;
+  background: none;
 }
 
 input{

@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import styles from "@/styles/pages/Home.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
+import Header from "@/components/common/Header";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <div
         className={`${styles.page}`}
       >
+        <Header />
         <main className={styles.main}>
 
         </main>

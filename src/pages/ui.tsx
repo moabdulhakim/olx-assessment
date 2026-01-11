@@ -18,18 +18,18 @@ const ui = () => {
                 <div>
                     <h2>OLX Links</h2>
                     <div className={styles.variants}>
-                        <OlxLink href="/about" content="Header" header />
+                        <OlxLink href="/about" content="Header" variant="header" />
                         <OlxLink href="/about" content="About" />
-                        <OlxLink href="/about" content="Footer" footer />
+                        <OlxLink href="/about" content="Footer" variant="footer" />
                     </div>
                 </div>
 
                 <div>
                     <h2>Buttons</h2>
                     <div className={styles.variants}>
-                        <Button icon="iconSell.svg" content="Sell" primary />
-                        <Button icon="search.svg" iconSize={20} secondary />
-                        <Button content="Login" linkLike />
+                        <Button icon="iconSell.svg" content="Sell" variant="primary" />
+                        <Button icon="search.svg" iconSize={20} variant="secondary" />
+                        <Button content="Login" variant="link-like" />
                     </div>
                 </div>
 

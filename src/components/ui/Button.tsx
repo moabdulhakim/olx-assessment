@@ -4,16 +4,14 @@ import styles from "@/styles/components/ui/Button.module.css";
 interface ButtonProps {
     icon?: string;
     content?: string;
-    primary?: boolean;
-    secondary?: boolean;
-    linkLike?: boolean;
+    variant: "primary" | "secondary" | "link-like";
     iconSize?: number;
 }
 
-const Button = ({icon, content, primary, secondary, linkLike, iconSize = 16}: ButtonProps) => {
+const Button = ({icon, content, variant, iconSize = 16}: ButtonProps) => {
 
   return (
-    <button className={`${styles.button} ${primary && styles.primary} ${secondary && styles.secondary} ${linkLike && styles["link-like"]}`}>
+    <button className={`${styles.button} ${styles[variant]}`}>
         {
             icon && <Image src={`/assets/icons/${icon}`} alt={icon} width={iconSize} height={iconSize} />
         }

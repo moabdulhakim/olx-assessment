@@ -3,7 +3,7 @@ import { ar } from "../locales/ar"
 import { en } from "../locales/en"
 
 export const useTranslation = () =>{
-    const {locale} = useRouter();
+    let {locale} = useRouter();
 
     let t;
     switch(locale){
@@ -14,6 +14,7 @@ export const useTranslation = () =>{
             t = en;
             break;
         default:
+            locale = "en";
             t = en;
     }
 

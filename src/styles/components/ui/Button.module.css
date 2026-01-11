@@ -6,6 +6,7 @@
     width: fit-content;
     height: fit-content;
     gap: 5px;
+    color: var(--text-primary)
 }
 
 .content{
@@ -35,6 +36,9 @@
     padding: 0;
 }
 
+.link-like .content{
+    font-size: 1.6rem;
+}
 .link-like:hover{
     border-bottom: none;
 }
