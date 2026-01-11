@@ -54,7 +54,7 @@ const Navbar = ({categories}: {categories: CategoryList}) => {
         {
             navCategories.map((category)=>{
                 return (
-                    <OlxLink key={category.id} href={`/${category.parentSlug}/${category.slug}`} content={category.name_l1} />
+                    <OlxLink key={category.id} href={`/${category.parentSlug}/${category.slug}`} content={category.name} />
                 )
             })
         }
@@ -69,10 +69,10 @@ const CategoriesListComponent = ({categories}: {categories: CategoryList}) =>{
             {categories.map((category)=>{
                 return (
                     <div className={styles.block} key={category.id}>
-                        <OlxLink key={category.id} href={`/${category.slug}`} content={category.name_l1} variant='header' />
+                        <OlxLink key={category.id} href={`/${category.slug}`} content={category.name} variant='header' />
                         {category.children.map((child)=>{
                             return (
-                                <OlxLink key={child.id} href={`/${category.slug}/${child.slug}`} content={child.name_l1} />
+                                <OlxLink key={child.id} href={`/${category.slug}/${child.slug}`} content={child.name} />
                             )
                         })}
                     </div>

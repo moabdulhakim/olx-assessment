@@ -7,7 +7,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 2rem;
+    padding: 2rem 5rem;
+    gap: 5rem;
 }
 
 .hero-banner{
@@ -17,4 +18,24 @@
     margin: 0 auto;
     border-radius: 0.5rem;
     overflow: hidden;
+}
+
+.categories-container{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3rem;
+}
+
+.category-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category-image span{
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
+    text-align: center;
 }

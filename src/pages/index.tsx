@@ -8,6 +8,7 @@ import HeroBanner from "@/components/pages/home/HeroBanner";
 import { GetServerSideProps } from "next";
 import { getAllCategories } from "@/services/categoryService";
 import { CategoryList } from "@/types/category";
+import AllCategories from "@/components/pages/home/AllCategories";
 
 
 export default function Home({categories}: {categories: CategoryList}) {
@@ -28,7 +29,7 @@ export default function Home({categories}: {categories: CategoryList}) {
         <Navbar categories={categories} />
         <main className={styles.main}>
             <HeroBanner />
-            {/* <AllCategories /> */}
+            <AllCategories categories={categories} />
         </main>
       </div>
     </>
