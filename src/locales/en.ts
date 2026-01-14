@@ -1,7 +1,13 @@
 export const en = {
     metadata: {
-        title: "Buy and Sell anywhere in Lebanon with OLX / dubizzle Lebanon online classifieds",
-        desc: "OLX / dubizzle Lebanon offers thousands of listings across cars, properties, furniture, jobs, electronics, and services. Explore what’s available today!",
+        home:{
+            title: "Buy and Sell anywhere in Lebanon with OLX / dubizzle Lebanon online classifieds",
+            desc: "OLX / dubizzle Lebanon offers thousands of listings across cars, properties, furniture, jobs, electronics, and services. Explore what’s available today!",
+        },
+        post:{
+            title: "Post your ad on OLX Lebanon",
+            desc: "Post your ad"
+        }
     },
     common: {
         loading: "Loading...",
@@ -31,5 +37,11 @@ export const en = {
     },
     home: {
         categories: "All Categories"
+    },
+    post: {
+        chooseCategory: "Choose a category"
+    },
+    attributes:{
+        sellAd: "Sell your ad",
     }
 }

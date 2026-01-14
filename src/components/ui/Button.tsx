@@ -2,7 +2,7 @@ import styles from "@/styles/components/ui/Button.module.css";
 import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "secondary" | "link-like";
+    variant?: "primary" | "secondary" | "link-like" | "icon";
     fullWidth?: boolean;
     children: React.ReactNode;
 }

@@ -36,6 +36,14 @@
     border-bottom: none;
 }
 
+.icon{
+    padding: 0.7rem;
+    border-radius: 50%;
+}
+.icon:hover{
+    background-color: rgba(120, 120, 120, 0.2);
+}
+
 .disabled{
     opacity: 0.8;
     cursor: not-allowed;

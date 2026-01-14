@@ -8,9 +8,11 @@
   --tertiary-color:#EC5B3E;
 
   --error-color: #EC5B3E;
-
+  
   --text-primary: #404041;
   --text-secondary: #000000;
+  
+  --border-color: #cecece;
 
   /* Font Sizes */
   --fs-h1: 3.2rem;
@@ -32,6 +34,7 @@
   /* heights */
   --header-height: 15.5rem;
   --input-height: 4.8rem;
+
 }
 
 *{

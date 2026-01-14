@@ -1,0 +1,49 @@
+.header{
+    top: 0;
+    padding: 2rem;
+    background: var(--foreground);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.page{
+    min-height: 100vh;
+}
+
+.main{
+    padding: 3rem 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* --------- Choose Category --------------- */
+
+.categories-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.category-card{
+    border: 1px solid var(--border-color);
+    padding: 1.4rem;
+    border-radius: 0.5rem;
+    font-size: var(--fs-caption);
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-details{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}

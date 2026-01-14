@@ -1,25 +1,29 @@
 import Head from "next/head";
 
-import styles from "@/styles/pages/Home.module.css";
+import styles from "@/styles/pages/Post.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
-import Header from "@/components/common/Header";
-import Navbar from "@/components/common/Navbar";
-import HeroBanner from "@/components/pages/home/HeroBanner";
 import { GetServerSideProps } from "next";
 import { getAllCategories } from "@/services/categoryService";
 import { CategoryList } from "@/types/category";
-import AllCategories from "@/components/pages/home/AllCategories";
-import FeaturedAds from "@/components/pages/home/FeaturedAds";
+import Header from "@/components/pages/post/Header";
+import ChooseCategory from "@/components/pages/post/ChooseCategory";
+import { useEffect } from "react";
+import { useCategoryStore } from "@/store/useCategoryStore";
 
 
-export default function Home({categories}: {categories: CategoryList}) {
+export default function Post({categories}: {categories: CategoryList}) {
     const {t} = useTranslation();
+    const {setCategories} = useCategoryStore();
+
+    useEffect(() => {
+        setCategories(categories);
+    }, [categories]);
 
   return (
     <>
       <Head>
-        <title>{t.metadata.home.title}</title>
-        <meta name="description" content={t.metadata.home.desc} />
+        <title>{t.metadata.post.title}</title>
+        <meta name="description" content={t.metadata.post.desc} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -27,11 +31,12 @@ export default function Home({categories}: {categories: CategoryList}) {
         className={`${styles.page}`}
       >
         <Header />
-        <Navbar categories={categories} />
         <main className={styles.main}>
-            <HeroBanner />
-            <AllCategories categories={categories} />
-            <FeaturedAds />
+            <h2>
+              {t.metadata.post.title}
+            </h2>
+
+            <ChooseCategory categories={categories} />
         </main>
       </div>
     </>
