@@ -4,7 +4,8 @@
   --foreground: #F1F1F2;
 
   --primary-color: #FCDE68;
-  --secondary-color: #5DCBF4;
+  --secondary-color: #5dcbf4;
+  --secondary-color-rgb: 93, 203, 244;
   --tertiary-color:#EC5B3E;
 
   --error-color: #EC5B3E;
