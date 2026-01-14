@@ -42,7 +42,7 @@ const Navbar = ({categories}: {categories: CategoryList}) => {
   return (
     <div className={styles.navbar}>
         <div ref={categoriesListRef}>
-            <Button variant="link-like" customStyles={styles["all-categories-btn"]} onClick={()=>setIsOpen(!isOpen)}>
+            <Button variant="link-like" className={styles["all-categories-btn"]} onClick={()=>setIsOpen(!isOpen)}>
                 <span>
                     {t.home.categories}
                 </span>

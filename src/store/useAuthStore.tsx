@@ -1,21 +1,17 @@
 import { create } from "zustand";
-
-interface User {
-    name: string;
-    email: string;
-}
+import { LoginUserData } from "@/types/User";
 
 interface AuthStore {
     isLoggedIn: boolean;
-    user: User | null;
+    user: LoginUserData | null;
     
-    login: (user: User) => void;
+    login: (user: LoginUserData) => void;
     logout: () => void;
 }
 
 export const useAuthStore = create<AuthStore>((set)=>({
     isLoggedIn: false,
     user: null,
-    login: (user: User) => set({isLoggedIn: true, user}),
+    login: (user: LoginUserData) => set({isLoggedIn: true, user}),
     logout: () => set({isLoggedIn: false, user: null})
 }))

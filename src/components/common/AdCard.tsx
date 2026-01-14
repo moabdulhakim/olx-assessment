@@ -2,12 +2,13 @@ import styles from "@/styles/components/common/AdCard.module.css";
 import { getIconPath } from "@/utils/utils";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
+import Link from "next/link";
 
 const AdCard = ({ ad }: { ad: any }) => {
-    const {t} = useTranslation();
+    const {t, isAr} = useTranslation();
 
   return (
-    <div className={styles["ad-card"]}>
+    <Link href={`/ad/${ad.ad_id}`} className={styles["ad-card"]}>
       <div className={`${styles.image}`}>
         <Image src={ad.ad_image_url} alt={ad.ad_title} fill objectFit="cover" />
       </div>
@@ -44,10 +45,10 @@ const AdCard = ({ ad }: { ad: any }) => {
             
         </div>
         <div className={`${styles.desc}`}>
-            <div className={`${styles.location}`}>{ad.ad_location_name_lc}</div>
+            <div className={`${styles.location}`}>{isAr? ad.ad_location_name_lc : ad.ad_location_name_en}</div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

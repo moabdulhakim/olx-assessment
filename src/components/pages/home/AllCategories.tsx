@@ -3,6 +3,7 @@ import { getImagePath } from "@/utils/utils";
 import Image from "next/image";
 import styles from "@/styles/pages/Home.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
+import Link from "next/link";
 
 const AllCategories = ({ categories }: { categories: CategoryList }) => {
   const {t, locale} = useTranslation();
@@ -13,7 +14,7 @@ const AllCategories = ({ categories }: { categories: CategoryList }) => {
 
       <div className={styles["categories-container"]}>
         {categories.map((category) => (
-          <div className={styles["category-image"]} key={category.id}>
+          <Link href={category.slug} className={styles["category-image"]} key={category.id}>
             <Image
               src={getImagePath(`${category.slug}.png`)}
               alt={locale == "ar" ? category.name_l1 : category.name}
@@ -21,7 +22,7 @@ const AllCategories = ({ categories }: { categories: CategoryList }) => {
               height={100}
             />
             <span>{locale == "ar" ? category.name_l1 : category.name}</span>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

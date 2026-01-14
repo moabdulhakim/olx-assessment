@@ -6,7 +6,8 @@
     width: fit-content;
     height: fit-content;
     gap: 5px;
-    color: var(--text-primary)
+    color: var(--text-primary);
+    font-size: var(--fs-body);
 }
 
 .primary{
@@ -24,13 +25,10 @@
     filter: brightness(97%);
 }
 
-
-
 .link-like{
     border-bottom: 2px solid var(--tertiary-color);
     padding: 0;
 }
-
 .link-like .content{
     font-size: 1.6rem;
 }
@@ -38,3 +36,12 @@
     border-bottom: none;
 }
 
+.disabled{
+    opacity: 0.8;
+    cursor: not-allowed;
+    background-color: #cecece;
+}
+
+.fullWidth{
+    width: 100%;
+}
