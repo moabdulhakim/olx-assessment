@@ -10,6 +10,6 @@ export const getFeaturedAds = (): Promise<any[]> => {
             }else{
                 reject("Failed to fetch featured ads");
             }
-        }, 4000)
+        }, 2000)
     })
 }
