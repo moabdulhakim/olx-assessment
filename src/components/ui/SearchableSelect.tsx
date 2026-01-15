@@ -1,8 +1,7 @@
 import Image from "next/image";
 import styles from "@/styles/components/ui/SearchableInput.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { getIconPath } from "@/utils/utils";
 
 interface Option {
   label?: string;
@@ -12,7 +11,9 @@ interface Option {
 interface InputProps {
   placeholder: string;
   options: Option[];
+  value?: string,
   icon?: string;
+  error?: string;
   onSelect?: (option: Option) => void;
 }
 
@@ -24,12 +25,25 @@ const SearchableSelect = ({
   placeholder,
   icon,
   options,
+  error,
+  value,
   onSelect = handleSelectDefault,
 }: InputProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(value || "");
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useClickOutside(containerRef);
+
+  useEffect(()=>{
+    if(!value) return;
+
+    const optionExist = options.find(op=> op.label == value || op.value == value);
+    if(optionExist){
+      setSearchTerm(optionExist.label || optionExist.value);
+    }else{
+      setSearchTerm("");
+    }
+  }, [value, options])
 
   const filteredOptions = options?.filter((option) => {
     const search = searchTerm.toLowerCase();
@@ -52,14 +66,14 @@ const SearchableSelect = ({
     const optionExist = options.find(op=> op.label == searchTerm || op.value == searchTerm);
     if(optionExist){
       setSearchTerm(optionExist.label || optionExist.value);
-      onSelect(optionExist);
     }else{
       setSearchTerm("");
     }
+    onSelect(optionExist || {label: "", value: ""});
   }
 
   return (
-    <div className={styles["input-container"]} ref={containerRef}>
+    <div className={`${styles["input-container"]} ${error && styles["input-error"]}`} ref={containerRef}>
       {icon && (
         <Image
           className={styles.img}
@@ -85,10 +99,11 @@ const SearchableSelect = ({
               <li
                 className={styles.option}
                 key={index}
-                onClick={() => {
+                onMouseDown={(e) => {
+                  e.preventDefault();
                   toggleDropdown();
-                  onSelect(option);
                   setSearchTerm(option.label || option.value);
+                  onSelect(option);
                 }}
               >
                 {option.label || option.value}
@@ -97,6 +112,7 @@ const SearchableSelect = ({
           })}
         </ul>
       )}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface UseFormProps<T>{
     initialValues: T,
@@ -11,8 +11,14 @@ const useForm = <T extends Record<string, any>>({initialValues, onSubmit, valida
     const [values, setValues] = useState<T>(initialValues);
     const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(()=>{
+        if(initialValues){
+            setValues(initialValues);
+        }
+    }, [initialValues])
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | {target: {name: string, value: string}}) => {
         const {name, value} = e.target;
         setValues({...values, [name]: value});
 

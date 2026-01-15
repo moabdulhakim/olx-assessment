@@ -1,24 +1,35 @@
 import styles from "@/styles/components/ui/MultipleSelect.module.css"
 import { CategoryFieldChoice } from "@/types/category";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 interface MultipleSelectProps {
     options: CategoryFieldChoice[];
     name: string;
+    value:string[];
+    onSelect: (options: string[]) => void;
+    error?: string;
 }
 
-const MultipleSelect = ({options}: MultipleSelectProps) => {
-    const [selectedVals, setSelectedVals] = useState<string[]>([]);
+const MultipleSelect = ({options, onSelect,value, error}: MultipleSelectProps) => {
+    const [selectedVals, setSelectedVals] = useState<string[]>(value || []);
+
 
     const handleSelect = (val :string)=>{
-
+        let newVals: string[];
         if(selectedVals.includes(val)){
-            setSelectedVals(selectedVals.filter((sVal)=> sVal !== val));
+            newVals = (selectedVals.filter((sVal)=> sVal !== val));
         }else{
-            setSelectedVals([...selectedVals, val])
+            newVals = ([...selectedVals, val])
         }
+
+        onSelect(newVals);
     }
+
+    useEffect(()=>{
+        setSelectedVals(value);
+    }, [value])
+
 
   return (
     <div className={styles["multiple-select"]}>
@@ -29,6 +40,7 @@ const MultipleSelect = ({options}: MultipleSelectProps) => {
                 </button>
             ))
         }
+        {error && <p className={styles.error}>{error}</p>}
     </div>
   )
 }

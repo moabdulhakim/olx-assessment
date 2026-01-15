@@ -20,6 +20,13 @@
     border: 1px solid var(--secondary-color);
 }
 
+.error{
+    color: var(--error-color);
+}
+.input-error{
+    border: 1px solid var(--error-color);
+}
+
 .dropdown{
     position: absolute;
     top: 100%;

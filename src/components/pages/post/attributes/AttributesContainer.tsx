@@ -5,11 +5,13 @@ import Image from "next/image";
 import { getIconPath, getImagePath } from "@/utils/utils";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getCategoryFields } from "@/services/categoryService";
 import DynamicField from "./DynamicField";
 import Button from "@/components/ui/Button";
 import { useTranslation } from "@/hooks/useTranslation";
+import useCategoryAttributes from "@/hooks/useCategoryAttributes";
+import useForm from "@/hooks/useForm";
 
 const AttributesContainer = ({
   category,
@@ -18,24 +20,45 @@ const AttributesContainer = ({
   category: Category;
   parentCategory: Category;
 }) => {
-  const [attributes, setAttributes] = useState<FieldsResponse | null>(null);
-  const {t, isAr} = useTranslation();
+  const { t, isAr } = useTranslation();
+  const { attributes } = useCategoryAttributes({
+    categorySlug: category.slug,
+    categoryId: category.id,
+  });
 
-  const fetchAttributes = async () => {
-    try {
-      const data = await getCategoryFields(category.slug);
-      setAttributes(data);
-    } catch (err) {
-      console.log("Something went wrong", err);
-    }
-  };
+  const initialFormValues = useMemo(() => {
+    if (!attributes) return {};
 
-  useEffect(() => {
-    fetchAttributes();
-  }, [category]);
+    return attributes.reduce(
+      (acc, attribute) => {
+        acc[attribute.attribute] = "";
+        return acc;
+      },
+      { videoLink: "", title: "" } as Record<string, any>
+    );
+  }, [attributes]);
+
+  const { handleSubmit, errors, handleChange, values, isSubmitting } = useForm({
+    initialValues: initialFormValues,
+    onSubmit: (values) => {
+      console.log("Final Data: ", values);
+    },
+    validate: (vals) => {
+      const errs: any = {};
+      attributes &&
+        attributes.forEach((field) => {
+          if (field.isMandatory && !vals[field.attribute]) {
+            errs[field.attribute] = isAr
+              ? `حقل ${field.name} مطلوب`
+              : `${field.attribute} is a required field`;
+          }
+        });
+      return errs;
+    },
+  });
 
   return (
-    <div className={styles["attributes-container"]}>
+    <form onSubmit={handleSubmit} className={styles["attributes-container"]}>
       <div className={styles["attributes-container-head"]}>
         <AttributeField label="Category">
           <div className={styles["field-category-change"]}>
@@ -47,24 +70,32 @@ const AttributesContainer = ({
                 alt={category.slug}
               />
               <div>
-                <p>{isAr? parentCategory.name:parentCategory.name_l1}</p>
-                <p>{isAr? category.name:category.name_l1}</p>
+                <p>{isAr ? parentCategory.name : parentCategory.name_l1}</p>
+                <p>{isAr ? category.name : category.name_l1}</p>
               </div>
             </div>
 
-            <Link href="/post">
-                {t.attributes.change}
-            </Link>
+            <Link href="/post">{t.attributes.change}</Link>
           </div>
         </AttributeField>
 
         <AttributeField label="Title" isRequired>
-          <Input placeholder={t.attributes.fields.title} />
+          <Input
+            placeholder={t.attributes.fields.title}
+            name="title"
+            value={values.title}
+            onChange={handleChange}
+            error={errors.title}
+          />
         </AttributeField>
         <AttributeField label={t.attributes.fields.video}>
           <Input
             icon={getIconPath("youtube.svg")}
             placeholder={t.attributes.fields.videoInput}
+            name="videoLink"
+            value={values.videoLink}
+            onChange={handleChange}
+            error={errors.videoLink}
           />
         </AttributeField>
       </div>
@@ -72,30 +103,42 @@ const AttributesContainer = ({
       <hr style={{ margin: "3rem auto", width: "80%" }} />
 
       <div className={styles["attributes-container-body"]}>
-        {attributes ? (
-          attributes[String(category.id)].flatFields.map((attribute) => (
-            <DynamicField attribute={attribute} isAr={isAr} />
-          ))
-        ) : 
-        Array.from({length: 7}).map((_)=>(
-            <div style={{ width: "100%", display: "flex", gap: "2rem" }}>
-            <div
-              className="skeleton-item"
-              style={{ flex: 1, height: "3rem" }}
-            ></div>
-            <div
-              className="skeleton-item"
-              style={{ flex: 3, width: "70%", height: "3rem" }}
-            ></div>
-          </div>
-        ))
-        }
+        {attributes
+          ? attributes.map((attribute) => (
+              <DynamicField
+                key={attribute.id}
+                attribute={attribute}
+                isAr={isAr}
+                name={attribute.attribute}
+                value={values[attribute.attribute]}
+                onChange={handleChange}
+                error={errors[attribute.attribute]}
+              />
+            ))
+          : Array.from({ length: 7 }).map((_) => (
+              <div style={{ width: "100%", display: "flex", gap: "2rem" }}>
+                <div
+                  className="skeleton-item"
+                  style={{ flex: 1, height: "3rem" }}
+                ></div>
+                <div
+                  className="skeleton-item"
+                  style={{ flex: 3, width: "70%", height: "3rem" }}
+                ></div>
+              </div>
+            ))}
       </div>
 
-      <Button type="submit" className={styles["submit-btn"]} variant="primary" fullWidth>
-        {t.attributes.sellAd}
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className={styles["submit-btn"]}
+        variant="primary"
+        fullWidth
+      >
+        {isSubmitting? t.common.loading:t.attributes.sellAd}
       </Button>
-    </div>
+    </form>
   );
 };
 

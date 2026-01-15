@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "@/styles/components/ui/Input.module.css";
 import Image from "next/image";
-import { getIconPath } from "@/utils/utils";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
