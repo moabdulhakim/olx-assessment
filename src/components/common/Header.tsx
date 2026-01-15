@@ -12,6 +12,7 @@ import LoginModal from "./LoginModal";
 import ProfileAvatar from "./ProfileAvatar";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useRouter } from "next/navigation";
+import Input from "../ui/Input";
 
 const Header = () => {
   const [isLoginModalOpened, setIsLoginModalOpened] = useState(false);
@@ -56,7 +57,7 @@ const Header = () => {
         </div>
 
         <div className={styles.center}>
-          <SearchableSelect placeholder={t.header.search} />
+          <Input placeholder={t.header.search} />
           <button className={`${locale == "ar" && styles["ar-search"]}`}>
             <Image
               src={getIconPath("search.svg")}
