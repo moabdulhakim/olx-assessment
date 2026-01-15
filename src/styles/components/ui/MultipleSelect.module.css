@@ -1,0 +1,23 @@
+.multiple-select{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.option{
+    border: var(--default-border);
+    padding: 1rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    min-width: fit-content;
+    border-radius: 3rem;
+}
+
+.option:hover:not(.selected){
+    background: rgba(var(--secondary-color-rgb),0.1);
+}
+.selected{
+    background: var(--secondary-color);
+    color: var(--text-secondary)
+    /* font-weight: var(--fw-bold); */
+}

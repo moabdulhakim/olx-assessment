@@ -10,7 +10,7 @@ export interface Statistics {
 }
 
 // يمكنك إضافة المزيد من الـ Roles المتوقعة هنا
-export type CategoryRole = 
+export type CategoryRole =
   | "include_purpose_in_title"
   | "include_purpose_in_description"
   | "show_phone_number"
@@ -38,16 +38,16 @@ export interface Category {
   locationDepthLimits: LocationDepthLimits;
   configurations: Record<string, any>; // لأنها حالياً كائنات فارغة
   statistics: Statistics;
-  
+
   // حقول اختيارية تظهر في بعض الكائنات فقط
   nameShort?: string;
   nameShort_l1?: string;
-  
+
   // حقول تظهر بـ null حالياً لكنها قد تحتوي على بيانات لاحقاً
   paaSections: any | null;
   templateConfigs: any | null;
   templateHashes: any | null;
-  
+
   // خاصية تكرارية (Recursive) للأبناء
   children: Category[];
 
@@ -56,3 +56,33 @@ export interface Category {
 
 // النوع الأساسي للمصفوفة اللي بعتها
 export type CategoryList = Category[];
+
+// --------------------------------------------------------
+
+export interface CategoryFieldChoice {
+  value: string;
+  label: string;
+  id: number;
+  seoSlug: {
+    ar: string;
+    en: string;
+  };
+}
+
+export interface CategoryField {
+  id: number;
+  name: string;
+  attribute: string;
+  valueType: "float" | "enum" | "string";
+  filterType: "single_choice" | "multiple_choice" | "range";
+  isMandatory: boolean;
+  choices?: Array<CategoryFieldChoice>;
+}
+
+export interface FieldsResponse {
+  [key: string]: {
+    flatFields: CategoryField[];
+    childrenFields: any;
+    parentFieldLookup: { [key: string]: string };
+  };
+}

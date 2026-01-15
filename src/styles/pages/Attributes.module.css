@@ -1,0 +1,114 @@
+.page{
+    min-height: 100vh;
+}
+
+.main{
+    padding: 3rem 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.attributes-body{
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.attributes-container{
+    flex: 3;
+    border: var(--default-border);
+    border-radius: 0.7rem;
+    padding: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+.attributes-container-head, .attributes-container-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.attribute-field{
+    width: 100%;
+    display: flex;
+}
+.attribute-field-label{
+    display: flex;
+    flex: 1;
+}
+.attribute-field-label p{
+    font-size: var(--fs-body);
+    color: var(--text-secondary);
+    font-weight: var(--fw-bold);
+}
+.attribute-field-label span{
+    color: var(--tertiary-color);
+}
+
+.attribute-field-body{
+    flex: 3;
+}
+
+
+/* FIELD: CATEGORY CHANGE */
+.field-category-change{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.field-category-change a{
+    font-weight: var(--fw-bold);
+    color: var(--secondary-color);
+}
+.category-info{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1.5rem;
+}
+.category-info div{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.category-info div p:first-child{
+    font-weight: var(--fw-bold);
+    color: var(--text-secondary);
+}
+
+.submit-btn{
+    margin-top: 5rem; 
+}
+
+
+/* .......... HELP ......... */
+.help{
+    flex: 1;
+    border: var(--default-border);
+    border-radius: 0.7rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-height: fit-content;
+}
+
+.help p{
+    font-size: var(--fs-caption);
+    color: var(--text-color);
+}
+.help li{
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    margin-inline-start: 1rem;
+}
+
+

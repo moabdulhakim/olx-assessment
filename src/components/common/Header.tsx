@@ -49,15 +49,14 @@ const Header = () => {
       <div className={styles["utilities-container"]}>
         <div className={styles.right}>
           <SearchableSelect
-            icon="location-pin.svg"
+            icon={getIconPath("location-pin.svg")}
             placeholder={t.header.location}
-            type="text"
             options={locale == "ar" ? lebanonGovernorates_ar : lebanonGovernorates}
           />
         </div>
 
         <div className={styles.center}>
-          <SearchableSelect placeholder={t.header.search} type="text" />
+          <SearchableSelect placeholder={t.header.search} />
           <button className={`${locale == "ar" && styles["ar-search"]}`}>
             <Image
               src={getIconPath("search.svg")}

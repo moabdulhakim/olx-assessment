@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "@/styles/components/ui/SearchableInput.module.css";
 import { useRef, useState } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { getIconPath } from "@/utils/utils";
 
 interface Option {
   label?: string;
@@ -9,11 +10,10 @@ interface Option {
 }
 
 interface InputProps {
-  type: "number" | "text";
   placeholder: string;
+  options: Option[];
   icon?: string;
-  options?: Option[];
-  handleSelect?: (option: Option) => void;
+  onSelect?: (option: Option) => void;
 }
 
 const handleSelectDefault = (option: Option) => {
@@ -21,11 +21,10 @@ const handleSelectDefault = (option: Option) => {
 };
 
 const SearchableSelect = ({
-  type,
   placeholder,
   icon,
   options,
-  handleSelect = handleSelectDefault,
+  onSelect = handleSelectDefault,
 }: InputProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -49,12 +48,22 @@ const SearchableSelect = ({
     setIsOpen(!isOpen);
   };
 
+  const handleInputBlur = () =>{
+    const optionExist = options.find(op=> op.label == searchTerm || op.value == searchTerm);
+    if(optionExist){
+      setSearchTerm(optionExist.label || optionExist.value);
+      onSelect(optionExist);
+    }else{
+      setSearchTerm("");
+    }
+  }
+
   return (
     <div className={styles["input-container"]} ref={containerRef}>
       {icon && (
         <Image
           className={styles.img}
-          src={`/assets/icons/${icon}`}
+          src={icon}
           alt={icon}
           width={20}
           height={20}
@@ -62,9 +71,10 @@ const SearchableSelect = ({
       )}
       <input
         className={styles.input}
-        type={type}
+        type={"text"}
         placeholder={placeholder}
         onFocus={toggleDropdown}
+        onBlur={handleInputBlur}
         onChange={(e) => setSearchTerm(e.target.value)}
         value={searchTerm}
       />
@@ -77,7 +87,7 @@ const SearchableSelect = ({
                 key={index}
                 onClick={() => {
                   toggleDropdown();
-                  handleSelect(option);
+                  onSelect(option);
                   setSearchTerm(option.label || option.value);
                 }}
               >

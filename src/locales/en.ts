@@ -43,5 +43,18 @@ export const en = {
     },
     attributes:{
         sellAd: "Sell your ad",
+        change: "Change",
+        fields: {
+            title: "Enter your ad title",
+            video: "Add a video",
+            videoInput: "Enter Youtube video URL",
+        },
+        help:{
+            needHelp: "Need help getting started?",
+            reviewResources: "Review these resource to learn how to create a great ad and increase your selling chances",
+            tipsLink: "Tips for improving your ads and your chances of selling",
+            allYouNeedLink: "All you need to know about Posting Ads",
+            changeAd: "You can always come back to change your ad"
+        }
     }
 }
