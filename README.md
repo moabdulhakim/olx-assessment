@@ -237,6 +237,7 @@ Switch between Arabic and English using the language toggle in the header. The a
 
 ---
 
+<!--
 ## 🚀 Future Roadmap
 
 The following features are planned for future releases to enhance the metadata-driven architecture:
@@ -296,10 +297,10 @@ This project demonstrates:
 - **Problem Solving**: Building reusable form infrastructure without external libraries
 
 ---
-
+-->
 ## 👨‍💻 Contact Information
 
-**Developer**: Mohamad Abdulhakim
+**Engineer**: Mohammad Abdulhakim
 
 Feel free to reach out for any questions or clarifications regarding this assessment.
 
